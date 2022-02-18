@@ -1,0 +1,28 @@
+{% extends 'front_page.html' %}
+
+{% block content%}
+<div class="row">
+    <div class="col-4">
+
+    </div>
+    <div class="col-4">
+        <form action="" method="post" novalidate>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Email address</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+              <small id="emailHelp" class="form-text text-muted">Your email won't be shared with anyone else.</small>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Password</label>
+              <input type="password" class="form-control" id="exampleInputPassword1">
+            </div>
+            <button type="submit" class="btn btn-danger">Log in</button> 
+            <h6>- or- </h6> 
+            <a class="btn btn-danger" href="/register" role="button">Register</a>
+          </form>
+    </div>
+    <div class="col-4">
+        
+    </div>
+</div>
+{% endblock %}
