@@ -20,8 +20,6 @@ class User(UserMixin, db.Model): # working table for user registration
 
     def check_password_hash(self, password):
         return check_password_hash(self.password_hash, password)
-    
-
 
 class Hero(db.Model): # table now works, but the foreignkey syntax is throwing errors every time I try to use it.
     id = db.Column(db.Integer, primary_key=True)
