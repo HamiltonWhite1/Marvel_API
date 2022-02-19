@@ -11,7 +11,6 @@ class User(UserMixin, db.Model):
     password_hash = db.Column(db.String(128))
     token = db.Column(db.String(128))
     date_created = db.Column(db.DateTime, index=True, default=datetime.utcnow)
-    character = db.relationship(db.Integer, db.ForeignKey('hero.id'))
 
     def __repr__(self):
         return f'<User {self.username}>'
@@ -25,8 +24,6 @@ class User(UserMixin, db.Model):
     @login.user_loader
     def load_user(id):
         return User.query.get(int(id))
-
-
 
 class Hero(db.Model):
     id = db.Column(db.Integer, primary_key=True)
