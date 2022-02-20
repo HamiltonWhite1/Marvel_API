@@ -1,5 +1,5 @@
 from app import app, db
-from flask import Flask, url_for, render_template, redirect, flash
+from flask import Flask, url_for, render_template, redirect, flash, request
 from flask_login import current_user, login_user, logout_user
 from app.models import Hero, User
 from app.forms import LoginForm, RegistrationForm, CreateHeroForm
@@ -46,10 +46,11 @@ def register():
 @app.route('/create_heroes', methods=['GET', 'POST']) #logic of the following function "works" but is not committing changes to DataBase
 def create_heroes():
     form = CreateHeroForm()
-    if form.validate_on_submit():
-        new_hero = Hero(name=form.name.data, description=form.description.data)
+    if request.method == 'POST':
+        new_hero = Hero(name=form.name.data, description=form.description.data, comics_appeared=form.comics_appeared.data, super_power=form.super_power.data)
         db.session.add(new_hero)
         db.session.commit()
+        return redirect('create_heroes')
     return render_template('create_heroes.html', title='Create Heroes', form=form)
 
 @app.route('/API')
